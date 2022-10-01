@@ -1,0 +1,57 @@
+\begin{thebibliography}{}
+
+\bibitem [\protect \citeauthoryear {%
+Potter%
+, Wyble%
+, Hagmann%
+\BCBL {}\ \BBA {} McCourt%
+}{%
+Potter%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2014}}%
+}]{%
+potter2014detecting}
+\APACinsertmetastar {%
+potter2014detecting}%
+\begin{APACrefauthors}%
+Potter, M\BPBI C.%
+, Wyble, B.%
+, Hagmann, C\BPBI E.%
+\BCBL {}\ \BBA {} McCourt, E\BPBI S.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2014}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Detecting meaning in RSVP at 13 ms per picture}
+  {Detecting meaning in rsvp at 13 ms per picture}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Attention, Perception, \&
+  Psychophysics}{76}{2}{270--279}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Unknown%
+}{%
+Unknown%
+}{%
+{\protect \APACyear {{\protect \bibnodate {}}}}%
+}]{%
+fpsyoutube}
+\APACinsertmetastar {%
+fpsyoutube}%
+\begin{APACrefauthors}%
+Unknown.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{{\protect \bibnodate {}}}{}{}.
+\newblock
+\APACrefbtitle {24 FPS vs 30 FPS vs 60 FPS (comparison).} {24 fps vs 30 fps vs
+  60 fps (comparison).}
+\newblock
+\begin{APACrefURL} \url{https://www.youtube.com/watch?v=_SzGQkI-IwM}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\end{thebibliography}

@@ -1,0 +1,95 @@
+\begin{flushleft}
+
+\section{Fehlbergi koefitsendid}
+ 
+Selleks, et tabelis \ref{table_1} määratud koefitsentidele lihtsamini ligi pääseda, oleks mõistlik koefitsendid kirjutada andmemassiividena/maatriksitena. Nendele pääseb ligi indekseid kasutades.
+
+
+Ehk:
+
+\begin{equation}
+A(k)=
+\begin{pmatrix}
+0\\
+1/4\\
+3/8\\
+12/13\\
+1\\
+1/2
+\end{pmatrix}
+\end{equation}
+ 
+
+\begin{equation}
+B(k,l)=
+\begin{pmatrix}
+0&0&0&0&0\\
+
+1/4&0&0&0&0\\
+
+3/32 & 9/32 & 0 & 0 & 0 \\
+
+1932/2197 & -7200/2197 & 7296/2197 & 0 & 0\\
+
+439/216 & -8 & 3680/513 & -845/4104 & 0\\
+
+-8/27 & 2 & -3544/2565 & 1859/4104 & -11/40 \\
+\end{pmatrix}
+\end{equation}
+
+\begin{equation}
+CH(k)=
+\begin{pmatrix}
+16/135\\
+0\\
+6656/12825\\
+28561/56430\\
+-9/50\\
+2/55
+\end{pmatrix}
+\hspace{10mm}
+CT(k)=
+\begin{pmatrix}
+1/360\\
+0\\
+-128/4275\\
+-2197/75240\\
+1/50\\
+2/55
+\end{pmatrix}
+\end{equation}
+
+
+Ka tõusudest $k_{i}$ loome massiivi:
+
+\begin{equation}
+k_{i}=
+\begin{pmatrix}
+k_{1}\\
+k_{2}\\
+k_{3}\\
+k_{4}\\
+k_{5}\\
+k_{6}
+\end{pmatrix}
+\end{equation}  
+
+Kuid meie mudelites esineb diferentsiaalvõrrandeid, mida lahendada soovime, rohkem kui üks. Seega, iga differentsiaalvõrrandi kohta, mida lahendame, tuleb lisada veel üks veerg $k$-sid. Ehk üldisemalt
+
+\begin{equation}
+k_{i,n}=
+\begin{pmatrix}
+k_{1,1} & k_{1,2} & ...& k_{1,n} \\
+k_{2,1}& k_{2,2} & ...& k_{2,n}\\
+k_{3,1}& k_{3,2} & ...& k_{3,n}\\
+k_{4,1}& k_{4,2} & ...& k_{4,n}\\
+k_{5,1}& k_{5,2} & ...& k_{5,n}\\
+k_{6,1}& k_{6,2} & ...& k_{6,n}
+\end{pmatrix}
+\end{equation}  
+
+kus $i$ on koefitsendi järjekorranumber(?) ja $n$ on võrrandi järjekorranumber.
+
+Programmeerimiskeeles P5JS alustatakse iteratsioonide loendamist arvust 0, mitte 1, mida tasub ka programmi realiseerimisel meeles pidada.
+
+\end{flushleft}

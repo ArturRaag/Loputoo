@@ -1,0 +1,107 @@
+
+%%%%%%%%%%%%%%%%% PACKAGES %%%%%%%%%%%%%%%%%%%%
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+%\usepackage{fontspec}
+\usepackage{titlesec}
+\usepackage{xcolor} % for black background white text
+\titleformat{\chapter}[display]
+  {\normalfont\bfseries\centering}{}{0pt}{\huge}  
+\titlespacing*{\chapter}{0pt}{0pt}{10pt}
+
+\usepackage[estonian]{babel}
+\usepackage{gensymb}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{url}
+\usepackage{cancel}
+\usepackage{amsmath} % for \dfrac macro
+\usepackage{subfig}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{hyperref}
+\usepackage{wrapfig} % to wrap text around figure
+\newcommand\ddfrac[2]{{\displaystyle\frac{\displaystyle #1}{\displaystyle #2}}}
+
+
+\usepackage{geometry} % LEHEKÜLJE GEOMEETRIA
+ \geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm,
+ }
+
+
+\usepackage{yfonts} % For gothic font
+
+\usepackage[framemethod=tikz]{mdframed} % RUUDUSTIKU JAOKS
+
+\usetikzlibrary{backgrounds}
+
+\mdfdefinestyle{graphpaper}{%
+    apptotikzsetting={\tikzset{mdfbackground/.style={}}},
+    singleextra={%
+        \scoped[on background layer,yshift=\mdfboundingboxheight]{\draw[step=5mm, line width=0.2mm, black!20!white] (0,0) grid (\mdfboundingboxwidth,-\mdfboundingboxheight);}
+    },
+}
+
+
+\usepackage{titlepic} % For cover page
+\usepackage{pdfpages}
+
+\usepackage{tikz} % Igasuguste kujundite joonistamise jaoks
+\usetikzlibrary{intersections, calc, angles} % nurkade joonestamise jaoks
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{xparse,array} %korrutustabeli jaoks
+\ExplSyntaxOn
+
+\NewDocumentCommand{\multiplicationtable}{O{2em}m}
+ {
+  \azetina_multiplicationtable:nn { #1 } { #2 }
+ }
+
+\tl_new:N \l__azetina_multiplicationtable_tl
+
+\cs_new_protected:Nn \azetina_multiplicationtable:nn
+ {
+  \tl_set:Nn \l__azetina_multiplicationtable_tl { $\times$ }
+  \int_step_inline:nn { #2 }
+   {
+    \tl_put_right:Nn \l__azetina_multiplicationtable_tl { & ##1 }
+   }
+  \tl_put_right:Nn \l__azetina_multiplicationtable_tl { \\ \hline }
+  \int_step_inline:nn { #2 }
+   {
+    \tl_put_right:Nn \l__azetina_multiplicationtable_tl { ##1 }
+    \int_step_inline:nn { #2 }
+     {
+      \tl_put_right:Nx \l__azetina_multiplicationtable_tl
+       {
+        & \int_to_arabic:n { ##1*####1 }
+       }
+     }
+    \tl_put_right:Nn \l__azetina_multiplicationtable_tl { \\ }
+   }
+  \begin{tabular}{ @{} r |@{}  *{#2}{w{r}{#1}@{}} }
+  \tl_use:N \l__azetina_multiplicationtable_tl
+  \end{tabular}
+ }
+
+\ExplSyntaxOff
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+% kaarte joonestamiseks:
+\def\centerarc[#1](#2)(#3:#4:#5)% Syntax: [draw options] (center) (initial angle:final angle:radius)
+    { \draw[#1] ($(#2)+({#5*cos(#3)},{#5*sin(#3)})$) arc (#3:#4:#5); }
+
+\usepackage{tikz,tkz-euclide} % võrdsete haarade tähistamiseks
+
+\usepackage{apacite} % tsiteeringute jaoks
+
+

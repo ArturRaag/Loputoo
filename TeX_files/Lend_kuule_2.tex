@@ -1,0 +1,212 @@
+\begin{flushleft}
+Kui sateliit piisavalt kaugele Maa atmosfäärist liigub, siis võiks arvestada ka teiste taevakehade gravitatsiooniväljadega. Praegusel juhul piirdume enda mudelis vaid Maa ja Kuu gravitatsioonijõuga. Taustsüsteemiks valime Maa.
+
+\vspace{5mm}
+Mitme kehale mõjuva jõu(vektori) puhul tuleb jõud(vektorid) lihtsalt lineaarselt kokku liita. Seda tasub eriti silmas pidada juhul, kui me kavatseme tulevikus kehale muid mõjuvaid jõudusid arvesse võtta.
+
+\vspace{5mm}
+Sateliidile mõjuvad jõud on järgmised:
+
+\begin{equation}
+\label{eq3_1}
+F_{Maa}=-G\dfrac{m \cdot M_{m}}{r_{m}^{3}}\cdot \vec{r_{m}}
+\end{equation}
+
+\begin{equation}
+\label{eq3_2}
+F_{Kuu}=-G\dfrac{m \cdot M_{k}}{r_{k}^{3}}\cdot \vec{r_{k}}
+\end{equation}
+
+
+Kus $F_{Maa}$ ja $F_{Kuu}$ on vastavate taevakehade poolt tekitatud gravitatsioonijõud, $M_{m}$ ja $M_{k}$ vastavate taevakehade massid, $r_{m}$ ja $r_{k}$ vastavate taevakehade tsentrite ja satteliidi kaugused, $m$ sateliidi mass ning $G$ gravitatsiooni konstant.
+
+
+\vspace{5mm}
+\subsection{Esimene kosmiline kiirus}
+
+\vspace{5mm}
+Tasub meeles pidada, et kui meie esialgne kiirus ei ole piisavalt suur, siis langeb meie sateliit Maa peale tagasi. Vähimat kiirust, mida sateliit saavutama peab, selleks et jääda ringjoonelisele orbiidile, nimetatakse \textbf{esimeseks kosmiliseks kiiruseks}.
+
+\vspace{5mm}
+Kui eeldada, et keha liigub ringjooneliselt mööda Maa pinda, siis saaksime keha liikumise kirjeldamiseks järgmise liikumis võrrandi: 
+
+\begin{equation}
+\label{eq3_3}
+ m \cdot a =F=m\cdot g
+\end{equation}
+kus $g$ on raskuskiirendus Maa pinna lähedal.
+
+Keha, mille omapäraks on ringjooneline liikumine, saab kirjeldada ka tsentrifugaal jõu kaudu:
+
+\begin{equation}
+\label{eq3_4}
+F_{c}=\dfrac{mv^{2}}{R_{Maa}}
+\end{equation}
+
+Pannes valemid \ref{eq3_3} ja \ref{eq3_4} üksteisega võrduma, saame avaldada keha vähima kiiruse, mis on tarvis ringjooneliseks orbiidiks Maa pinna lähedal.
+
+\begin{equation}
+\label{eq3_5}
+\dfrac{mv^{2}}{R_{Maa}} = mg \longrightarrow v = \sqrt{\dfrac{\cancel{m}gR_{Maa}}{\cancel{m}}} \longrightarrow v= \sqrt{gR_{Maa}}
+\end{equation}
+
+Kuid ideaalis on orbiidis olev keha ikkagi Maa pinnast veidi eemal. Selle jaoks tuleb meil valemit \ref{eq3_5} veidi täiendada.
+
+Esmalt paneme kirja uuesti üldise liikumisvõrrandi:
+
+\begin{equation}
+\label{eq3_6}
+ma=F=-G\dfrac{m \cdot M_{Maa}}{r^{2}}
+\end{equation}
+
+, kusjuures
+
+\begin{equation}
+\label{eq3_7}
+r=R_{Maa}+h
+\end{equation}
+
+Tsentrifugaaljõudu tuleb samuti üldistada, kuna see võib samuti kõrgusest sõltuda. Seega:
+
+\begin{equation}
+\label{eq3_8}
+F_{c}=\dfrac{mv^{2}}{(R_{Maa}+h)}
+\end{equation}
+
+Paneme valemid \ref{eq3_6} ja \ref{eq3_7} üksteisega võrduma 
+
+\begin{equation}
+\label{eq3_9}
+-G\dfrac{m \cdot M_{Maa}}{(R_{Maa}+h)^{2}} = \dfrac{mv^{2}}{(R_{Maa}+h)}
+\end{equation}
+
+ning tuletan sellest viimaks vähima kiiruse, mis on vajalik antud kõrgusel Maa pinnast, ringjoonelise orbiidi säilitamiseks:
+
+\begin{equation}
+\label{eq3_10}
+v_{I}= \sqrt{\dfrac{G\cancel{m}M_{Maa}\cancel{(R_{Maa}+h)}}{\cancel{m}\cancel{(R_{Maa} + h)^{2}}}} = \sqrt{\dfrac{GM_{Maa}}{(R_{Maa}+h)}}
+\end{equation}
+
+\textcolor{red}{Miinusmärk?}
+
+Valemi \ref{eq3_10} eeskirja järgi võime öelda, et kui keha kõrgusel $h$ liigub aeglasemini kui kiirusega $v_{I}$, siis langeb antud keha tagasi Maa peale.
+
+\vspace{5mm}
+\subsection{Teine kosmiline kiirus}
+
+\vspace{5mm}
+Kui me soovime leida vähimat kiirust, mis on vajalik keha jaoks, et lennata Maa mõjusfäärist välja (lõpmatusse), siis saame seda arvutada kasutades energiajäävuse seadust:
+
+\begin{equation}
+\label{eq3_11}
+E_{tot}= E_{pot} + E_{kin}
+\end{equation}
+
+Kus $E_{tot}$, $E_{pot}$ ja $E_{kin}$ on kogueneriga, potentsiaalne energia ning kineetiline energia.
+
+Kahe keha vahelist potentsiaalset energiat saab arvutada valemiga:
+
+\begin{equation}
+\label{eq3_12}
+E_{pot} = - \dfrac{G\cdot m \cdot M}{R}
+\end{equation}
+
+Ning kineetilist energiat valemiga:
+
+\begin{equation}
+\label{eq3_13}
+E_{kin} = \dfrac{mv^{2}}{2}
+\end{equation}
+
+\vspace{5mm}
+Seega keha kogu energia maa pinnalt õhku tõustes on
+
+\begin{equation}
+\label{eq3_14}
+E_{0}= - \dfrac{G\cdot m \cdot M}{R} + \dfrac{mv_{II}^{2}}{2}
+\end{equation}
+
+, kus $v_{II}$ on vähim kiirus, et Maa mõjusfäärist välja lennata.
+
+\vspace{5mm}
+Lõpmata kaugel, peaks keha koguenergia võrduma nulliga, ehk
+
+\begin{equation}
+\label{eq3_15}
+E_{1}= 0
+\end{equation}
+
+Energia jäävuse seaduse tõttu, peab energia alghetkel olema sama, mis viimasel hetkel, ehk nad peavad olema võrdsed. Seega:
+
+\begin{equation}
+\label{eq3_16}
+E_{0} = E_{1} \longrightarrow - \dfrac{G\cdot m \cdot M}{R} + \dfrac{mv_{II}^{2}}{2} = 0
+\end{equation}
+
+Avaldades $v_{II}$ me saame:
+
+\begin{equation}
+\label{eq3_17}
+v_{II}=\sqrt{\dfrac{2GmM}{Rm}} \longrightarrow v_{II}=\sqrt{\dfrac{2GM}{R}}
+\end{equation}
+
+\vspace{5mm}
+\subsection{Liikumisvõrrand}
+
+\vspace{5mm}
+Kuna meie kehale mõjub jõud nii Maa kui ka Kuu poolt, siis tuleb meil liikumisvõrrand need kaks jõudu kokku liita.
+
+\begin{equation}
+\label{eq3_18}
+F= m \cdot \vec{a} \longrightarrow -G\dfrac{m \cdot M_{m}}{r_{m}^{3}}\cdot \vec{r} - G \dfrac{m \cdot M_{k}}{|\vec{R}-\vec{r_{m}}|^{3}}\cdot(\vec{R}-\vec{r_{m}}) = m\cdot \vec{a}
+\end{equation}
+
+Jagame mõlemad võrduse pooled $m$-iga
+
+\begin{equation}
+\label{eq3_19}
+-G\dfrac{\cancel{m} \cdot M_{m}}{r_{m}^{3}}\cdot \vec{r} - G \dfrac{\cancel{m} \cdot M_{k}}{|\vec{R}-\vec{r_{m}}|^{3}}\cdot(\vec{R}-\vec{r_{m}}) = \cancel{m}\cdot \vec{a}
+\end{equation}
+
+Järele jääb
+
+\begin{equation}
+\label{eq3_20}
+-G\dfrac{ M_{m}}{r_{m}^{3}}\cdot \vec{r} - G \dfrac{ M_{k}}{|\vec{R}-\vec{r_{m}}|^{3}}\cdot(\vec{R}-\vec{r_{m}}) = \vec{a}
+\end{equation}
+
+Teisendades kõik vektorid $x$ ja $y$ komponentideks ning arvestades, et $v_{x}=\dot{x}$, $a_{x}=\dot{v_{x}}=\ddot{x}$ ning $v_{y}=\dot{y}$, $a_{y}=\dot{v_{y}}=\ddot{y}$, saame me kahe teistjärku differentsiaalvõrrandite süsteemi asemel hoopis esimest järku nelja võrrandisüsteemi.
+
+\begin{equation}
+\label{eq3_21}
+\begin{cases}
+\dot{x}=v_{x}\\
+\dot{y} = v_{y}\\
+\ddot{x} = - \dfrac{G \cdot M_{m} \cdot 10^{-9}}{(x_{m}^{2}+y_{m}^{2})^{3/2}}\cdot x_{m} - \dfrac{G \cdot M_{k} \cdot 10^{-9}}{((X-x_{m})^{2}+(Y-y_{m})^{2})^{3/2}}\cdot (X-x_{m}) \\
+\ddot{y} = - \dfrac{G \cdot M_{m} \cdot 10^{-9}}{(x_{m}^{2}+y_{m}^{2})^{3/2}}\cdot y_{m} - \dfrac{G \cdot M_{k} \cdot 10^{-9}}{((X-x_{m})^{2}+(Y-y_{m})^{2})^{3/2}} \cdot (Y-y_{m})
+
+\end{cases}
+\end{equation}
+
+Saime võrrandisüsteemi, mis kirjeldab sateliidi liikumist  tasapinnal. Meie taustsüsteem/koordinaadistik on fikseeritud Maa keskpunktis kuid modeleerime kahe taevakeha (Maa ja Kuu) ning ühe sateliidi liikumist. Sateliidi jaoks on võrrandisüsteem olemas \ref{eq3_21}, kuid Kuu liikumise kirjeldamiseks meil veel midagi ei ole.
+
+\vspace{5mm}
+Kuna taustsüsteem on fikseeritud Maaga ja hetkel eeldame, et Kuu tiirleb ümber Maakera ringjooneliselt pideva kiirusega $v_{kuu}\approx 1.022$ $km/s$, siis Kuu liikumist saab kirjeldada järgmise võrrandisüsteemiga:
+
+\begin{equation}
+\label{eq3_22}
+\begin{cases}
+X_{kuu}=R\cdot cos(\omega \cdot t)\\
+Y_{kuu} = R \cdot sin(\omega \cdot t)
+\end{cases}
+\end{equation}
+
+kus $R$ kaugus Maa ja Kuu vahel, $t$ on aeg, $\omega$ on Kuu nurkkiirus, kusjuures
+
+\begin{equation}
+\label{eq3_23}
+\omega=\dfrac{v_{kuu}}{R} = \dfrac{2 \cdot \pi}{T}
+\end{equation}
+
+Võrrandeid \ref{eq3_22} diferentseerima ei pea, kuna nad sõltuvad ainult ajast.
+\end{flushleft}

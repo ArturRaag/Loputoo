@@ -1,0 +1,45 @@
+ 
+%%%%%%%%%%%%% PREAMBLE %%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper, oneside]{book}
+
+\input{Lõputöö_paketid}
+
+%%%%%%%%%%% BEGINNING THE DOCUMENT %%%%%
+\begin{document}
+
+%%%%%%%%%%%%%%%% Tiitelleht %%%%%%%%%%%%%
+\title{Füüsikaliste nähtuste modelleerimine}
+\author{Artur Raag}
+\date{2021}
+\maketitle
+
+%%%%% TOC järel ja pärast tühjad lehed %%%%%%%
+\thispagestyle{empty}
+\tableofcontents
+\newpage
+\thispagestyle{empty}
+
+%\chapter{Sissejuhatus}
+%\input{Sissejuhatus}
+
+\chapter{Kepleri teooria}
+\input{Kepler_1}
+
+
+\chapter{Lend kuule teooria}
+\input{Lend_kuule_2}
+
+\chapter{Runge-Kutta Fehlberg meetod}
+\input{RKF45}
+
+\chapter{RKF45 realiseerimine programmeerimis keeltes P5JS näitel}
+\input{Runge_kutta_realiseerimine_p5jsis}
+
+\chapter{Lennard-Jonesi potentsiaal}
+\input{Lennard_Jones_potential}
+
+\pagebreak
+%\bibliographystyle{apacite}
+%\bibliography{References}
+
+\end{document}

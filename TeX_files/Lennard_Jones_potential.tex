@@ -1,0 +1,184 @@
+\begin{flushleft}
+
+\section{Lennard-Jones potentsiaal}
+ 
+Lennard-Jonesi potentsiaal on defineeritud järgnevalt
+\begin{equation} \label{eq_5.1}
+V(r)=4 \epsilon \left[ \left( \dfrac{\sigma}{r} \right)^{12}- \left( \dfrac{\sigma}{r} \right)^{6} \right]
+\end{equation}
+kus $V$ on potentsiaal, $r$ on osakeste vaheline kaugus.
+
+Osakeste vahelise kauguse $r$ moodul on defineeritud kui
+
+\begin{equation} \label{eq_5.2}
+%r=\overrightarrow{r_{i,j}}=\overrightarrow{r_{j}}-\overrightarrow{r_{i}}
+r_{i,j}=\sqrt{(x_{j}-x_{i})^{2}+(y_{j}-y_{i})^{2}}
+\end{equation}
+
+kus $x_{j}$ ja $y_{j}$ on esimese ning $x_{i}$ ja $y_{i}$ on teise osakese asukoha vektori koordinaadid.
+
+Kui rakendada $ \nabla $ operaatorit Lennard-Jonesi potentsiaalile \ref{eq_5.1}, siis saaksime jõu kahe osakese vahel, mis näeb välja nõnda:
+
+\begin{equation} \label{eq_5.3}
+\vec{F}=-\nabla V
+\end{equation}
+
+kus $V$ on Lennard-Jonesi potentsiaal \ref{eq_5.1}, ning
+
+\begin{equation} \label{eq_5.4}
+\nabla =\left[ \dfrac{ \delta }{\delta x} \hat{i}+\dfrac{\delta}{\delta y} \hat{j} \right]
+\end{equation}
+
+
+
+\begin{center}
+\begin{tikzpicture}
+\draw[help lines, color=gray!30, dashed] (-4.9,-4.9) grid (4.9,4.9);
+\draw[-stealth,ultra thick] (-5,0)--(5,0) node[right]{$x$};
+\draw[-stealth,ultra thick] (0,-5)--(0,5) node[above]{$y$};
+\draw[-{Stealth[scale=2]}] (0,0)--(2,4) node[midway,left]{$r_{i}$};
+\draw[-{Stealth[scale=2]}](0,0)--(4,4) node[midway,right]{$r_{j}$};
+\filldraw[black] (2,4) circle (2pt);
+\filldraw[black] (4,4) circle (2pt);
+\draw[-{Stealth[scale=2]}](2,4)--(4,4) node [midway, above] {$r_{i,j}$};
+\end{tikzpicture}
+\end{center}
+
+\textbf{Valemi tuletus KATSE 1:}
+
+
+
+\[F=-4 \epsilon \left[ \sigma^{12} \dfrac{\delta}{\delta x} \left( r^{-12} \right) \hat{i}-\sigma^{6} \dfrac{\delta}{\delta x} (r^{-6}) \hat{i}+\sigma^{12} \dfrac{\delta}{\delta y} (r^{-12}) \hat{j} -\sigma^{6} \dfrac{\delta}{\delta y} (r^{-6}) \hat{j}\right]=... \]
+
+Olgu $r$ hoopis $ r=\sqrt{x^{2}+y^{2}} $. Sellisel juhul tuleb
+
+\[...= -4 \epsilon \left[ \sigma^{12} \dfrac{\delta}{\delta x} (x^{2}+y^{2})^{-6} \hat{i}-\sigma^{6} \dfrac{\delta}{\delta x} (x^{2}+y^{2})^{-3} \hat{i}+\sigma^{12} \dfrac{\delta}{\delta y} (x^{2}+y^{2})^{-6} \hat{j} -\sigma^{6} \dfrac{\delta}{\delta y} (x^{2}+y^{2})^{-3} \hat{j}\right]=...\]
+
+Tuletiste arvutamisel võtame, et $(x^{2}+y^{2})=u$ (Chain Rule). Seega tuleb arvutada tuletised 
+\[\dfrac{\delta}{\delta u} (u^{-6}) \cdot \dfrac{\delta}{\delta x} (x^{2}+y^{2}) \]
+
+\[\dfrac{\delta}{\delta u} (u^{-6}) \cdot \dfrac{\delta}{\delta y} (x^{2}+y^{2}) \]
+
+\[\dfrac{\delta}{\delta u} (u^{-3}) \cdot \dfrac{\delta}{\delta x} (x^{2}+y^{2}) \]
+
+\[\dfrac{\delta}{\delta u} (u^{-3}) \cdot \dfrac{\delta}{\delta y} (x^{2}+y^{2}) \]
+
+Need välja arvutades saame jätkata jõu valemi tuletamist
+
+\[...=-4 \epsilon \left( \left[-12x \sigma^{12}(x^{2}+y^{2})^{-7}-6x \sigma^{6}(x^{2}+y^{2})^{-4} \right] \hat{i}+ \left[-12y \sigma^{12}(x^{2}+y^{2})^{-7}-6y \sigma^{6}(x^{2}+y^{2})^{-4} \right] \hat{j} \right) =...\]
+
+\[...=-4 \epsilon \left(6x \sigma^{6} \left[-2 \sigma^{6}(x^{2}+y^{2})^{-7}- (x^{2}+y^{2})^{-4} \right] \hat{i}+6y \sigma^{6} \left[-2 \sigma^{6}(x^{2}+y^{2})^{-7}-(x^{2}+y^{2})^{-4} \right] \hat{j} \right) =...\]
+
+
+\[...=-24  \epsilon \sigma^{6} \left(x  \left[-2 \sigma^{6}(x^{2}+y^{2})^{-7}- (x^{2}+y^{2})^{-4} \right] \hat{i}+y \left[-2 \sigma^{6}(x^{2}+y^{2})^{-7}-(x^{2}+y^{2})^{-4} \right] \hat{j} \right)  \]
+
+Ehk:
+
+\begin{equation} \label{eq_5.5}
+F_{x}=-24 \epsilon \sigma^{6} x \left[ -2 \sigma^{6}(x^{2}+y^{2})^{-7}-(x^{2}+y^{2})^{-4} \right]
+\end{equation}
+
+\begin{equation} \label{eq_5.6}
+F_{y}=-24 \epsilon \sigma^{6} y \left[ -2 \sigma^{6}(x^{2}+y^{2})^{-7}-(x^{2}+y^{2})^{-4} \right]
+\end{equation}
+
+\textbf{Valemi tuletus KATSE 2:}
+
+\begin{equation} \label{eq_5.7}
+\nabla V(r)=4 \epsilon \left[ \dfrac{\delta V}{\delta x_{i} }\hat{i}+\dfrac{\delta V}{\delta y_{i}}\hat{j} \right]
+\end{equation}
+
+\begin{equation}
+V(r)=4 \epsilon \left[ \sigma^{12} r^{-12}-\sigma^{6} \cdot r^{-6} \right]
+\end{equation}
+
+
+\begin{equation} \label{eq_5.8}
+\nabla V(r)=4 \epsilon \nabla \left[ \sigma^{12} \left[(x_{i}-x_{j})\hat{i} + (y_{i}-y_{j}) \hat{j} \right]^{-12} -\sigma^{6} \left[ (x_{i}-x_{j})\hat{i} +(y_{i}-y_{j})\hat{j} \right]^{-6} \right]
+\end{equation}
+
+Asendan vektoriaalse $r$ hoopis modulaarse $r$-iga, kuna jõud kahe osakese vahel suunast ei sõltu, sõltub vaid moodulist: $r=\sqrt{(x_{i}-x_{j})^{2}+(y_{i}-y_{j})^{2}}$.
+
+\begin{equation} \label{eq_5.9}
+\nabla V(r)=4 \epsilon \nabla \left[ \sigma^{12} \left[(x_{i}-x_{j})^{2}+(y_{i}-y_{j})^{2} \right]^{-6} -\sigma^{6} \left[ (x_{i}-x_{j})^{2}+(y_{i}-y_{j})^{2} \right]^{-3} \right]
+\end{equation}
+
+
+Tuleb arvutada järgmised osatuletised:
+
+\begin{equation} \label{eq_5.11}
+ \dfrac{\delta }{\delta x_{i}} \underbrace{((x_{i}-x_{j})^{2}+(y_{i}-y_{j})^{2})^{-6}}_{u} \cdot \hat{i}=\dfrac{\delta}{\delta u} (u)^{-6} \cdot  \dfrac{\delta }{\delta x_{i}} \left( (x_{i}-x_{j})^{2}+\cancel{(y_{i}-y_{j})^{2}} \right)\cdot \hat{i}
+\end{equation}
+
+Teised tuletised analoogselt...
+
+\begin{equation} \label{eq_5.12}
+\dfrac{\delta }{\delta y_{i}}((x_{i}-x_{j})^{2}+(y_{i}-y_{j})^{2})^{-6} \cdot \hat{j}
+\end{equation}
+
+\begin{equation} \label{eq_5.13}
+ \dfrac{\delta }{\delta x_{i}}((x_{i}-x_{j})^{2}+(y_{i}-y_{j})^{2})^{-3} \cdot \hat{i}
+\end{equation}
+
+\begin{equation} \label{eq_5.14}
+ \dfrac{\delta }{\delta y_{i}}((x_{i}-x_{j})^{2}+(y_{i}-y_{j})^{2})^{-3}\cdot \hat{j} 
+\end{equation}
+
+Alustame osatuletisega \ref{eq_5.11}
+
+\[ \dfrac{\delta }{\delta x_{i}} \underbrace{((x_{i}-x_{j})^{2}+(y_{i}-y_{j})^{2})^{-6}}_{u}\cdot \hat{i} =\dfrac{\delta}{\delta u} (u)^{-6} \cdot  \dfrac{\delta }{\delta x_{i}} \left( (x_{i}-x_{j})^{2}+\cancel{(y_{i}-y_{j})^{2}} \right) \cdot \hat{i}=\]
+
+\[= -6((x_{i}-x_{j})^{2}+(y_{i}-y_{j})^{2}) ^{-7} \cdot \dfrac{\delta}{\delta x_{i}} (\underbrace{x_{i}-x_{j}}_{v})^{2} \cdot \hat{i}=\]
+
+\[ = -6 \cdot \left(  (x_{i} -x_{j})^{2}+(y_{i}-y_{j})^{2}\right)^{-7} \cdot \dfrac{\delta}{\delta v} (v)^{2} \cdot \dfrac{\delta}{\delta x_{i}}(x_{i}-x_{j}) \cdot \hat{i}= \]
+
+\[=-6 \cdot \left(  (x_{i} -x_{j})^{2}+(y_{i}-y_{j})^{2}\right)^{-7} \cdot 2 (x_{i}-x_{j}) \cdot 1 \cdot \hat{i} =\]
+
+\[=-12 \cdot \left(  (x_{i} -x_{j})^{2}+(y_{i}-y_{j})^{2}\right)^{-7} \cdot  (x_{i}-x_{j}) \cdot \hat{i} \]
+
+Jätame \ref{eq_5.12} esialgu vahele, vaatleme hoopis \ref{eq_5.13}, siis saame jõu $F_{x}$.
+
+\[ \dfrac{\delta }{\delta x_{i}}((x_{i}-x_{j})^{2}+(y_{i}-y_{j})^{2})^{-3} \cdot \hat{i}= -3((x_{i}-x_{j})^{2}+(y_{i}-y_{j})^{2}) ^{-4} \cdot \dfrac{\delta}{\delta x_{i}} (\underbrace{x_{i}-x_{j}}_{v})^{2} \cdot \hat{i}=\]
+
+\[=-3((x_{i}-x_{j})^{2}+(y_{i}-y_{j})^{2}) ^{-4} \cdot 2 (x_{i}-x_{j}) \hat{i}= \]
+
+\[=-6((x_{i}-x_{j})^{2}+(y_{i}-y_{j})^{2}) ^{-4} \cdot (x_{i}-x_{j}) \hat{i} \]
+
+Kui panna viimased kaks tulemust kokku, siis saame, et $F_{x}$:
+
+\[
+F_{x}=4 \epsilon \sigma^{6} (12 \sigma^{6} \cdot \left(  (x_{i} -x_{j})^{2}+(y_{i}-y_{j})^{2}\right)^{-7} \cdot  (x_{i}+x_{j}) \cdot \hat{i}  -6((x_{i}-x_{j})^{2}+(y_{i}-y_{j})^{2}) ^{-4} \cdot (x_{i}-x_{j}) \hat{i})
+\]
+
+Kui veidi lihtsustada...
+
+\begin{equation} \label{eq_5.15}
+F_{x}=24 \epsilon \sigma^{6} [2\sigma^{6}((x_{i} -x_{j})^{2}+(y_{i}-y_{j})^{2})^{-7}-((x_{i}-x_{j})^{2}+(y_{i}-y_{j})^{2}) ^{-4}] \cdot (x_{i}-x_{j}) 
+\end{equation}
+
+Analoogselt $F_{y}$-i tuletisi \ref{eq_5.12} ja \ref{eq_5.14} arvutades saame:
+
+\begin{equation} \label{eq_5.16}
+F_{y}=24 \epsilon \sigma^{6} [2\sigma^{6}((x_{i} -x_{j})^{2}+(y_{i}-y_{j})^{2})^{-7}-((x_{i}-x_{j})^{2}+(y_{i}-y_{j})^{2}) ^{-4}] \cdot (y_{i}-y_{j})
+\end{equation}
+
+\section{Kiirendus}
+
+Kui asendada valemid \ref{eq_5.15} ja \ref{eq_5.16} Newtoni II seadusesse, siis saaksime avaldada kiirendused.
+
+\begin{equation} \label{eq_5.17}
+F=ma
+\end{equation}
+
+\begin{equation} \label{eq_5.18}
+24 \epsilon \sigma^{6} [2\sigma^{6}((x_{i} -x_{j})^{2}+(y_{i}-y_{j})^{2})^{-7}-((x_{i}-x_{j})^{2}+(y_{i}-y_{j})^{2}) ^{-4}] \cdot (x_{i}-x_{j})=ma
+\end{equation}
+
+Jagame mõlemad võrduse pooled miga
+
+\begin{equation} \label{eq_5.19}
+a_{x}=\dfrac{24 \epsilon \sigma^{6} [2\sigma^{6}((x_{i} -x_{j})^{2}+(y_{i}-y_{j})^{2})^{-7}-((x_{i}-x_{j})^{2}+(y_{i}-y_{j})^{2}) ^{-4}] \cdot (x_{i}-x_{j})}{m}
+
+\end{equation}
+
+\end{flushleft}

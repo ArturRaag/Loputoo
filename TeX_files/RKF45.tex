@@ -1,0 +1,105 @@
+
+\begin{flushleft}
+
+Meie mudelites/simulatsioonides esineb erinevaid diferentsiaalvõrrandeid, mille lahendamiseks kasutame 4ndat järku Runge Kutta Fehlberg meetodit.
+
+\section{RKF meetodi kirjeldus}
+
+Meetodi edukaks rakendamiseks on vaja määrata ära algtingimus:
+
+\begin{equation}
+y'=f(x,y) \hspace{5mm} y(x_{0})=y_{0}
+\end{equation}
+
+ning kuna meetod on iteratiivne, siis tuleb määrata ära ka (integreerimise)samm $h$ ($x$-i järgi). Diferentsiaalvõrrandi funktsiooni väärtust järgmises punktis arvutatakse järgmise eeskirja järgi:
+
+\begin{equation}
+y_{n+1}=y_{n}+\dfrac{h}{6}\cdot(k_{1}+2k_{2}+2k_{3}+k_{4}),
+\end{equation}
+kus 
+
+\begin{equation}
+k_{1}=f(x_{n},y_{n})
+\end{equation}
+
+\begin{equation}
+k_{2}=f(x_{n}+\dfrac{h}{2},y_{n}+\dfrac{h}{2}k_{1})
+\end{equation}
+
+\begin{equation}
+k_{3}=f(x_{n}+\dfrac{h}{2},y_{n}+\dfrac{h}{2}k_{2})
+\end{equation}
+
+\begin{equation}
+k_{4}=f(x_{n}+h,y_{n}+hk_{3})
+\end{equation}
+
+
+\section{RKF45}
+Hetkel eeldasime, et samm $h$ on fikseeritud, kuid see võib meie lahenduse täpsust vähendada. Täpsema tulemuse saamiseks kasutame optimiseeritud Runge Kutta Fehlberg meetodit (RKF45), millel on adaptiivsed omadused. 
+
+Nimelt leitakse differentsiaalvõrrandi kaks ligikaudset lahendit, mida seejärel võrreldakse. Kui lahendid on oma väärtuste poolest piisavalt sarnased, siis võetakse lahend vastu ja minnakse üle järgmisele iteratsioonile. Kui lahendite täpsus on määratud täpsusest madalam, siis (integreerimis)sammu $h$ vähendatakse. Analoogselt kui lahendite täpsus on määratud täpsusest suurem, siis (integreerimis)sammu $h$ suurendatakse ning tehakse kogu iteratsioon uuesti uue sammuga läbi enne järgmisele iteratsioonile asumist.
+
+Ka arvutamise eeskiri erineb veidi eelnevalt mainitud RKF meetodist.
+
+\begin{equation}
+\begin{split}
+&k_{1}=h \cdot f(x+A(1) \cdot h, y) \\
+&k_{2}=h \cdot f(x+A(2)\cdot h, y+B(2,1) \cdot k_{1})\\
+&k_{3}=h \cdot f(x+A(3)\cdot h, y+B(3,1)\cdot k_{1} + B(3,2) \cdot k_{2})\\
+&k_{4}=h \cdot f(x+A(4)\cdot h, y+B(4,1)\cdot k_{1} + B(4,2) \cdot k_{2} + B(4,3)\cdot k_{3})\\
+&k_{5}=h \cdot f(x+A(5)\cdot h, y+B(5,1)\cdot k_{1} + B(5,2) \cdot k_{2} + B(5,3)\cdot k_{3} + B(5,4)\cdot k_{4})\\
+&k_{6}=h \cdot f(x+A(6)\cdot h, y+B(6,1)\cdot k_{1} + B(6,2) \cdot k_{2} + B(6,3)\cdot k_{3} + B(6,4)\cdot k_{4}+B(6,5)\cdot k_{5}),\\
+\end{split}
+\label{RKF45_K}
+\end{equation}
+
+kus $A(k)$ ning $B(k,l)$ on Fehlbergi poolt tuletatud koefitsendid, ning on leitavad tabelist \ref{table_1}.
+
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+\hline
+k&A(k)&B(k,1)&B(k,2)&B(k,3)&B(k,4)&B(k,5)&CH(k)&CT(k)\\
+\hline
+1&0&0&0&0&0&0&16/135&1/360\\
+\hline
+2&1/4&1/4&0&0&0&0&0&0\\
+\hline
+3&3/8&3/32 & 9/32 & 0 & 0 & 0& 6656/12825 & -128/4275 \\
+\hline
+4&12/13&1932/2197 & -7200/2197 & 7296/2197 & 0 & 0 & 28561/56430 & -2197/75240\\
+\hline
+5&1&439/216 & -8 & 3680/513 & -845/4104 & 0& -9/50&1/50\\
+\hline
+6&1/2&-8/27 & 2 & -3544/2565 & 1859/4104 & -11/40& 2/55 & 2/55 \\
+\hline
+\end{tabular}
+\caption{ $A$ ja $B$ koefitsendid}
+\label{table_1}
+\end{table}
+
+Diferentsiaalvõrrandi lahend leitakse nõnda:
+
+\begin{equation}
+y_{n+1}=y_{n}+CH(1)\cdot k_{1}+CH(2)\cdot k_{2}+CH(3)\cdot k_{3}+CH(4)\cdot k_{4}+CH(5)\cdot k_{5}+CH(6)\cdot k_{6}
+\end{equation}
+
+ning kärpimisviga, millega määrame ära kas muudame enda sammu või mitte, arvutatakse:
+
+\begin{equation}
+TE=|CT(1)\cdot k_{1}+CT(2)\cdot k_{2}+CT(3) \cdot k_{3}+CT(4) \cdot k_{4} + CT(5) \cdot k_{5}+CT(6) \cdot k_{6}|,
+\end{equation}
+
+kus $CT(k)$ ning $CH(k)$ on samuti Fehlbergi poolt tuletatud koefitsendid ning leitavad tabelist \ref{table_1}.
+
+Kui viga $TE> \epsilon$ ($\epsilon$ - meie poolt määratud täpsus) , siis asendame eelmise sammu $h$ uue sammuga $h_{uus}$ ning kordame iteratsiooni. Kui $TE \leq \epsilon$, siis saame jätkata järgmist iteratsiooni ning asendame sammu $h$ uue sammuga $h_{uus}$.
+
+Uut sammu arvutame valemiga:
+
+\begin{equation}
+h_{uus}=0.9 \cdot h \cdot \left( \dfrac{\epsilon}{TE}\right)^{1/5}
+\end{equation}
+
+\end{flushleft}

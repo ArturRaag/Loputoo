@@ -1,0 +1,161 @@
+\begin{flushleft}
+
+
+Selleks, et modelleerida keha liikumist ümber valitud taevakeha, tuleb meil leida:
+
+\begin{itemize}
+\item kuidas keha koordinaadid $x(t)$ ja $y(t)$ sõltuvad ajast. 
+
+
+\item kuidas kiirusvektori projektsioonid $v_{x}(t)$ ja $v_{y}(t)$ sõltuvad ajast.
+
+\item millised on keha kineetilised, potentsiaalsed ja kogu energiad erinevatel ajahetkedel?
+\end{itemize}
+
+Sellejaoks tuleb meil kirja panna liikumisvõrrand, mille saame Newtoni teise seaduse kaudu:
+
+\begin{equation}
+\label{eq1}
+\vec{F}=m\vec{a}
+\end{equation}
+
+Kui me eeldame, et sateliit kehale mõjub vaid gravitatsiooni jõud, siis saame asendada $F$-i hoopis $F_{g}$-ga:
+
+\begin{equation}
+\label{eq2}
+\vec{F_{g}}= -G \cdot \dfrac{m \cdot M}{r^{3}}\cdot \vec{r}
+\end{equation}
+
+Siinkohal tasub mainida, et potentsiaalse energia valem on [\textbf{\textcolor{red}{TÕESTA!!!!!!!!!!!}}]:
+
+\begin{equation}
+\label{eq3}
+U_{pot}=-G\cdot \dfrac{m \cdot M}{r}
+\end{equation}
+
+Siin valemites on $G$ gravitatsiooni konstant, $M$ on Maa mass, $m$ sateliidi mass ning $r$ on kahe keha tsentrite vaheline kaugus. Viimast suurust saab ümber kirjutada ka kujul $r=R_{M}+h$, kus $R_{M}$ on keha keskmine raadius ning $h$ on sateliidi kõrgus maapinna suhtes.
+
+Asendades $F_{g}$ valemisse (\ref{eq1}), saame:
+
+\begin{equation}
+\label{eq4}
+-G \cdot \dfrac{m \cdot M}{r^{3}}\cdot \vec{r} = m \vec{a}
+\end{equation}
+
+Jagame mõlemad võrduse pooled $m$-iga ning saame
+
+\begin{equation}
+\label{eq5}
+\vec{a}=-G \cdot \dfrac{M}{r^{3}}\cdot \vec{r} 
+\end{equation}
+
+Jaotame vektori $x$ ja $y$ komponentideks. Teame, et asukoha teist järku tuletis, annab meile kiirenduse, ning esimest järku tuletis annab meile kiiruse. Seega:
+
+
+
+\begin{equation}
+\label{eq6}
+\begin{cases}
+\ddot{x}=-G \cdot \dfrac{M}{r^{3}}\cdot x\\
+\ddot{y}=-G \cdot \dfrac{M}{r^{3}}\cdot y
+\end{cases}
+\end{equation}
+
+, kusjuures
+
+\begin{equation}
+\label{eq7}
+r= \sqrt{x^{2}+y^{2}}
+\end{equation}
+
+Asendades $v_{x}=\dot{x}$, $a_{x}=\dot{v_{x}}=\ddot{x}$ ning $v_{y}=\dot{y}$, $a_{y}=\dot{v_{y}}=\ddot{y}$, saame me kahe teistjärku differentsiaalvõrrandite süsteemi asemel hoopis esimest järku nelja võrrandisüsteemi.
+
+
+\begin{equation}
+\label{eq8}
+\begin{cases}
+\dot{x}=v_{x}\\
+\dot{y}=v_{y}\\
+\dot{v_{x}}=-G\dfrac{M}{r^{3}}\cdot x\\
+\dot{v_{y}}=-G\dfrac{M}{r^{3}}\cdot y
+
+\end{cases}
+\end{equation}
+
+Diferentsiaalvõrrandite süsteemi lahendamiseks kasutame rkf45 algorütmi.
+
+Samuti on näha, et võrrandisüsteemi lahendamiseks on vaja määrata algkiirused $v_{x}$ ja $v_{y}$ ning algkoordinaadid $x$ ja $y$.
+
+\textbf{\textcolor{red}{Siin jääb võrrandisüsteemini jõudmine ikkagi veidi häguseks/müstikaks. Ilmselt peaks enne seda uurima mida RKF45 täpsemalt teeb, seda siin kirjeldama ja sellest tegema ka järelduse millist võrrandisüsteemi me lõpuks soovime. UURI JAAN JANNO ÕPIKUT LK 196}}
+
+\subsection{Ühikute teisendamine}
+
+Kuna meil on peamiselt tegemist makrokehadega, mille kiirused on hästi suured, siis tasuks nende kiirused teisendada meeter/sekundilt kilomeeter/sekundiks.
+
+\vspace{2mm}
+Ehk kui esialgu on kiirus ühikuga $m/s$, siis selle teisendamisel $km/s$-ks tuleb meil kiirust laiendada $1000$-ga. Suuruse laiendamine meil tegelikult midagi ei muuda, kuna $1000$-ed taanduksid ära. Põhjus miks me aga seda teeme, on sellepärast, et kiirus, mis on esialgu $m/s$, muutuks $1000$-ga läbi jagades $km/s$-ks, mis oleks omakorda veel läbi korrutatud $1000$-ga. Ehk teisisõnu, kiiruste või kauguste teisendamisel meetrilt kilomeetrile, tuleb meil suurus lihtsalt $1000$-ga läbi korrutada.
+
+\vspace{5mm}
+Ehk matemaatiliselt: $v_{x}\left[\dfrac{m}{s} \right]=\dfrac{1000 \cdot v_{x}[m/s]}{1000}\longrightarrow \left[ \begin{tabular}{c}
+$v_{x}/1000$ \\
+on kiirus km/s.
+\end{tabular} \right] \longrightarrow 1000 \cdot v_{x} \left[\dfrac{km}{s} \right]$
+
+\vspace{5mm}
+Seega võrrandite
+\[ 
+\begin{cases}
+\dot{x}=v_{x}\\
+\dot{y}=v_{y}
+\end{cases}
+\]
+puhul, tuleb meil mõlemad võrduse pooled korrutada 1000-ga.
+
+\vspace{5mm}
+Saame:
+\begin{equation}
+\begin{cases}
+1000 \cdot \dot{x}=1000 \cdot v_{x}\\
+1000 \cdot \dot{y} = 1000 \cdot v_{y}
+\end{cases}
+\longrightarrow 
+\begin{cases}
+\dot{x}=v_{x}\\
+\dot{y}=v_{y}
+\end{cases}
+\end{equation} 
+
+Mõlemalt võrduse poolelt taanduvad $1000$-d ära, mis tähendab seda, et võime vabalt esimesed kaks võrrandit teisendada meeter/sekundilt kilomeeter/sekundiks kasutamata igasuguseid koefitsente.
+
+\vspace{5mm}
+Võrrandite 
+\[
+\begin{cases}
+\dot{v_{x}}=-G\dfrac{M}{r^{3}}\cdot x\\
+\dot{v_{y}}=-G\dfrac{M}{r^{3}}\cdot y
+
+\end{cases}\]
+puhul analoogselt käitudes saame:
+
+\vspace{5mm}
+
+\begin{equation}
+\begin{cases}
+1000 \cdot \dot{v_{x}}=-G\dfrac{M}{(10^{3} \cdot r)^{3}}\cdot 1000 \cdot x\\
+1000 \cdot \dot{v_{y}}=-G\dfrac{M}{(10^{3} \cdot r)^{3}}\cdot 1000 \cdot y
+\end{cases}
+\longrightarrow
+\begin{cases}
+\dot{v_{x}}=-G\dfrac{M}{10^{9} \cdot r^{3}} \cdot x\\
+\dot{v_{y}}=-G\dfrac{M}{10^{9} \cdot r^{3}} \cdot y
+\end{cases}
+\longrightarrow
+\begin{cases}
+\dot{v_{x}}=-G\dfrac{M \cdot 10^{-9}}{r^{3}}\cdot x\\
+\dot{v_{y}}=-G\dfrac{M \cdot 10^{-9}}{r^{3}}\cdot y
+\end{cases}
+\end{equation}
+
+Ehk kiirenduste puhul tuleb meil eduka teisenduse jaoks korrutada võrrandite paremad pooled koefitsendiga $10^{-9}$.
+
+\end{flushleft}
